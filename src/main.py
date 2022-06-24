@@ -60,23 +60,30 @@ for date in product_dates:
     product_tuple.append((date, locals()[choosen_product][date]))
 product_prices = np.array(product_tuple) # Putting a product prices in a numpy array => (date, price)
 
+week_pirces = product_prices[-7: ,1] # Last 7 days prices
+month_prices = product_prices[-30: ,1] # Last 30 days prices
+
 
 # Calculating Last price
 if choosen_cal == "Last price":
     last_price = product_prices[np.where(product_prices == last_date)[0], 1][0] # first index of product_prices gives the row index of the price
-    print("Last price of %s is %i$." % (choosen_product, last_price))
+    print("Last price of %s is %f$." % (choosen_product, last_price))
 
 
 
 # Calculating Last week average price
 if choosen_cal == "Last week average price":
-    week_pirces = product_prices[-7: ,1] # Last 7 days prices
     week_av = np.average(week_pirces) # Average of the last 7 days prices
     print("Last week average price of %s is %f$." % (choosen_product, week_av))
 
 
 # Calculating Last month average price
 if choosen_cal == "Lask month average price":
-    month_prices = product_prices[-30: ,1] # Last 30 days prices
     month_av = np.average(month_prices) # Average of the last 30 days prices
     print("Last month average price of %s is %f$." % (choosen_product, month_av))
+
+
+# Calculating Last week highest price
+if choosen_cal == "Last week highest price":
+    week_max = np.max(week_pirces)
+    print("Last week highest price of %s is %f$." % (choosen_product, week_max))
