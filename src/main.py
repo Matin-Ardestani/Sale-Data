@@ -105,3 +105,23 @@ elif choosen_cal == "Last week lowest price":
 elif choosen_cal == "Last month lowest price":
     month_min = np.min(month_prices) # Lowest price of the last 30 days
     print("Last month lowest price of %s is %f$." % (choosen_product, month_min))
+
+
+# Calculating Custome date
+elif choosen_cal == "Choose a custome date":
+    # Getting the start date from user
+    start_date = input("Enter start date (e.g: 20/1/2022): ")
+    start_date = start_date.split('/')
+    start_date = datetime(int(start_date[2]), int(start_date[1]), int(start_date[0])).date()
+    # Getting the finish date from user
+    finish_date = input("Enter finish date (e.g: 20/1/2022): ")
+    finish_date =finish_date.split('/')
+    finish_date = datetime(int(finish_date[2]), int(finish_date[1]), int(finish_date[0])).date()
+    
+    custome_dates = product_prices[(np.where(product_prices == start_date)[0], 1)[0][0] : (np.where(product_prices == finish_date)[0], 1)[0][0]] # dates and prices
+    custome_prices = product_prices[(np.where(product_prices == start_date)[0], 1)[0][0] : (np.where(product_prices == finish_date)[0], 1)[0][0], 1] # prices only
+    print("Dates and Prices: ")
+    print(custome_dates) # Printing custome days
+    print("Highest Price:" , np.max(custome_prices), custome_dates[np.where(custome_prices == np.max(custome_prices))[0][0], 0]) # Printing highest price with its date
+    print("Lowest Price:" , np.min(custome_prices), custome_dates[np.where(custome_prices == np.min(custome_prices))[0][0], 0]) # Printing lowest price with its date
+    print("Average Price:" , np.average(custome_prices)) # Printing the average price
