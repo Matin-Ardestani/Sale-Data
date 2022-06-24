@@ -41,7 +41,7 @@ choosen_product = products_list[choosen_product]
 # Choosing calculation by user
 print('\nWhat do you want about %s? (number)' % choosen_product)
 
-calcuations_list = ["Last price", "Last week average price", "Lask month average", "Last week highest price", "Last month highest price", "Last week lowest price", "Last month lowest price", "Choose a custome date"]
+calcuations_list = ["Last price", "Last week average price", "Lask month average price", "Last week highest price", "Last month highest price", "Last week lowest price", "Last month lowest price", "Choose a custome date"]
 
 for cal in calcuations_list:
     print('%s. %s' % (calcuations_list.index(cal) + 1, cal)) # printing calculation options
@@ -68,8 +68,15 @@ if choosen_cal == "Last price":
 
 
 
-# Calculating Last week avrage price
+# Calculating Last week average price
 if choosen_cal == "Last week average price":
-    week_pirces = product_prices[-7: ,1] # Last seven days prices
-    week_av = np.average(week_pirces) # Average of the last seven days prices
+    week_pirces = product_prices[-7: ,1] # Last 7 days prices
+    week_av = np.average(week_pirces) # Average of the last 7 days prices
     print("Last week average price of %s is %f$." % (choosen_product, week_av))
+
+
+# Calculating Last month average price
+if choosen_cal == "Lask month average price":
+    month_prices = product_prices[-30: ,1] # Last 30 days prices
+    month_av = np.average(month_prices) # Average of the last 30 days prices
+    print("Last month average price of %s is %f$." % (choosen_product, month_av))
