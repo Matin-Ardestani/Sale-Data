@@ -85,5 +85,11 @@ if choosen_cal == "Lask month average price":
 
 # Calculating Last week highest price
 if choosen_cal == "Last week highest price":
-    week_max = np.max(week_pirces)
+    week_max = np.max(week_pirces) # Highest price of the last 7 days
     print("Last week highest price of %s is %f$." % (choosen_product, week_max))
+
+
+# Calculating Last month highest price
+if choosen_cal == "Last month highest price":
+    month_max = np.max(month_prices) # Highest price of the last 30 days
+    print("Last month highest price of %s is %f$." % (choosen_product, month_max))
