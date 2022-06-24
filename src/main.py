@@ -1,6 +1,7 @@
 # Importing need pachages
 from datetime import datetime
 import openpyxl
+import numpy as np
 
 # Importing data file
 file_directory = ('/home/matin/Desktop/projects/Store-Data/src/data.xlsx')
@@ -37,13 +38,29 @@ choosen_product = int(input("")) - 1
 choosen_product = products_list[choosen_product]
 
 
-# # Choosing calculation by use
+# Choosing calculation by user
 print('\nWhat do you want about %s? (number)' % choosen_product)
 
-calcuations_list = ["Today's price", "Last week average price", "Lask month average", "Last week highest price", "Last month highest price", "Last week lowest price", "Last month lowest price", "Choose a custome date"]
+calcuations_list = ["Last price", "Last week average price", "Lask month average", "Last week highest price", "Last month highest price", "Last week lowest price", "Last month lowest price", "Choose a custome date"]
 
 for cal in calcuations_list:
     print('%s. %s' % (calcuations_list.index(cal) + 1, cal)) # printing calculation options
 
 choosen_cal = int(input("")) - 1
 choosen_cal = calcuations_list[choosen_cal]
+
+
+# Having choosen product ditails in arrays
+product_dates = np.array(list(locals()[choosen_product].keys())) # Having product dates in a numpy array
+
+product_tuple = []
+for date in locals()[choosen_product]:
+    product_tuple.append((date, locals()[choosen_product][date]))
+product_prices = np.array(product_tuple) # Having a product prices in a numpy array => (date, price)
+
+
+# Calculating Last price
+if choosen_cal == "Last price":
+    last_date = max(product_dates)
+    last_price = product_prices[np.where(product_prices == last_date)[0], 1][0] # first index of product_prices gives the row index of the price
+    print("Last price of %s is %i" % (choosen_product, last_price))
