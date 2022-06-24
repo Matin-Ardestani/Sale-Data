@@ -50,17 +50,26 @@ choosen_cal = int(input("")) - 1
 choosen_cal = calcuations_list[choosen_cal]
 
 
-# Having choosen product ditails in arrays
-product_dates = np.array(list(locals()[choosen_product].keys())) # Having product dates in a numpy array
+# Putting choosen product ditails in arrays
+product_dates = np.array(sorted(list(locals()[choosen_product].keys()))) # Putting product dates in a numpy array (sorted by date)
+
+last_date = product_dates[-1]
 
 product_tuple = []
-for date in locals()[choosen_product]:
+for date in product_dates:
     product_tuple.append((date, locals()[choosen_product][date]))
-product_prices = np.array(product_tuple) # Having a product prices in a numpy array => (date, price)
+product_prices = np.array(product_tuple) # Putting a product prices in a numpy array => (date, price)
 
 
 # Calculating Last price
 if choosen_cal == "Last price":
-    last_date = max(product_dates)
     last_price = product_prices[np.where(product_prices == last_date)[0], 1][0] # first index of product_prices gives the row index of the price
-    print("Last price of %s is %i" % (choosen_product, last_price))
+    print("Last price of %s is %i$." % (choosen_product, last_price))
+
+
+
+# Calculating Last week avrage price
+if choosen_cal == "Last week average price":
+    week_pirces = product_prices[-7: ,1] # Last seven days prices
+    week_av = np.average(week_pirces) # Average of the last seven days prices
+    print("Last week average price of %s is %f$." % (choosen_product, week_av))
