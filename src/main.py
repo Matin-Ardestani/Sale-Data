@@ -72,36 +72,36 @@ if choosen_cal == "Last price":
 
 
 # Calculating Last week average price
-if choosen_cal == "Last week average price":
+elif choosen_cal == "Last week average price":
     week_av = np.average(week_pirces) # Average of the last 7 days prices
     print("Last week average price of %s is %f$." % (choosen_product, week_av))
 
 
 # Calculating Last month average price
-if choosen_cal == "Lask month average price":
+elif choosen_cal == "Lask month average price":
     month_av = np.average(month_prices) # Average of the last 30 days prices
     print("Last month average price of %s is %f$." % (choosen_product, month_av))
 
 
 # Calculating Last week highest price
-if choosen_cal == "Last week highest price":
+elif choosen_cal == "Last week highest price":
     week_max = np.max(week_pirces) # Highest price of the last 7 days
     print("Last week highest price of %s is %f$." % (choosen_product, week_max))
 
 
 # Calculating Last month highest price
-if choosen_cal == "Last month highest price":
+elif choosen_cal == "Last month highest price":
     month_max = np.max(month_prices) # Highest price of the last 30 days
     print("Last month highest price of %s is %f$." % (choosen_product, month_max))
 
 
 # Calculating Last week lowest price
-if choosen_cal == "Last week lowest price":
+elif choosen_cal == "Last week lowest price":
     week_min = np.min(week_pirces) # Lowest price of the last 7 days
     print("Last week lowest price of %s is %f$." % (choosen_product, week_min))
 
 
 # Calculating Last month lowest price
-if choosen_cal == "Last month lowest price":
+elif choosen_cal == "Last month lowest price":
     month_min = np.min(month_prices) # Lowest price of the last 30 days
     print("Last month lowest price of %s is %f$." % (choosen_product, month_min))
