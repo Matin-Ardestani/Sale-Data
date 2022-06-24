@@ -97,5 +97,11 @@ if choosen_cal == "Last month highest price":
 
 # Calculating Last week lowest price
 if choosen_cal == "Last week lowest price":
-    week_min = np.min(week_pirces) # Highest price of the last 7 days
+    week_min = np.min(week_pirces) # Lowest price of the last 7 days
     print("Last week lowest price of %s is %f$." % (choosen_product, week_min))
+
+
+# Calculating Last month lowest price
+if choosen_cal == "Last month lowest price":
+    month_min = np.min(month_prices) # Lowest price of the last 30 days
+    print("Last month lowest price of %s is %f$." % (choosen_product, month_min))
