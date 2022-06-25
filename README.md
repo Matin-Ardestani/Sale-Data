@@ -12,7 +12,7 @@ To use this program:
  ```
 3. Run ```main.py``` file with the following command:
 ```
-$ python3 main.py
+$ python3 src/main.py
 ```
 
 ## More information
