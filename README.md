@@ -1,5 +1,6 @@
 # Sale Data
 Processing sale datas with Numpy.
+
 This program gets your disordered sale data and gives you details that you would go in trouble to get.
 
 ## How to use this program
