@@ -99,13 +99,13 @@ if choosen_cal == "Last price":
 
 # Calculating Last week average price
 elif choosen_cal == "Last week average price":
-    week_av = np.average(week_pirces) # Average of the last 7 days prices
+    week_av = week_pirces.mean() # Average of the last 7 days prices
     print("\nLast week average price of %s is %s$." % (choosen_product, remove_trailing_zeros(week_av)))
 
 
 # Calculating Last month average price
 elif choosen_cal == "Lask month average price":
-    month_av = np.average(month_prices) # Average of the last 30 days prices
+    month_av = month_prices.mean() # Average of the last 30 days prices
     print("\nLast month average price of %s is %s$." % (choosen_product, remove_trailing_zeros(month_av)))
 
 
@@ -135,7 +135,7 @@ elif choosen_cal == "Last month lowest price":
 
 # Calculating Total average price
 elif choosen_cal == "Total average price":
-    total_av = np.average(product_prices[:, 1])
+    total_av = product_prices[:, 1].mean()
     print("\n%s total average price is %s$." % (choosen_product, remove_trailing_zeros(total_av)))
 
 
@@ -168,4 +168,4 @@ elif choosen_cal == "Choose a custome date":
     print(custome_dates) # Printing custome days
     print("\nHighest Price:" , remove_trailing_zeros(np.max(custome_prices)), custome_dates[np.where(custome_prices == np.max(custome_prices))[0][0], 0]) # Printing highest price with its date
     print("Lowest Price:" , remove_trailing_zeros(np.min(custome_prices)), custome_dates[np.where(custome_prices == np.min(custome_prices))[0][0], 0]) # Printing lowest price with its date
-    print("Average Price:" , remove_trailing_zeros(np.average(custome_prices))) # Printing the average price
+    print("Average Price:" , remove_trailing_zeros(custome_prices.mean())) # Printing the average price
